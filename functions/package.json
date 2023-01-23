@@ -17,7 +17,7 @@
     "@signalwire/realtime-api": "^3.6.0",
     "dotenv": "^16.0.3",
     "firebase-admin": "^11.4.1",
-    "firebase-functions": "^3.18.0",
+    "firebase-functions": "^4.2.0",
     "flatted": "^3.2.7",
     "isomorphic-fetch": "^3.0.0",
     "node-fetch": "^2.6.8",
