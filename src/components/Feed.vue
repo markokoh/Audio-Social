@@ -3,7 +3,7 @@ import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { ref } from "vue";
 import { db } from "../firebase/config";
 
-const messageArray = ref([]);
+const messages = ref([]);
 const showText = ref(true);
 const hideText = () => {
   if (showText.value === true) {
@@ -12,6 +12,8 @@ const hideText = () => {
     showText.value = true;
   }
 };
+
+const elements = ref([]);
 
 const makeHumanReadableTime = (epochMilliseconds) => {
   const date = new Date(epochMilliseconds);
@@ -27,6 +29,19 @@ const makeHumanReadableTime = (epochMilliseconds) => {
   return humanReadableTime;
 };
 
+const playMessageAudio = (url, index) => {
+  console.log("playMessageAudio");
+  console.log("index", index);
+  elements.value[index].style.backgroundColor = "red";
+  elements.value[index].classList.add("animate__animated", "animate__shakeX");
+  const beat = new Audio(url);
+  beat.play();
+
+  beat.onended = function () {
+    elements.value[index].style.backgroundColor = "gray";
+  };
+};
+
 const q = query(
   collection(db, "voicemailTranscriptions"),
   orderBy("time", "asc")
@@ -35,7 +50,7 @@ onSnapshot(q, (snapshot) => {
   snapshot.docChanges().forEach((change) => {
     if (change.type === "added") {
       console.log("New message: ", change.doc.data());
-      messageArray.value.unshift(change.doc.data());
+      messages.value.unshift(change.doc.data());
       makeHumanReadableTime(change.doc.data().time);
     }
   });
@@ -53,11 +68,15 @@ onSnapshot(q, (snapshot) => {
     </button>
   </div>
   <div
-    v-for="(message, i) in messageArray"
+    v-for="(message, i) in messages"
     :key="message.callSid"
-    :class="{ 'animate__animated animate__bounceInDown': i === 0 }"
+    :class="{
+      'animate__animated animate__bounceInDown': i === 0,
+    }"
+    @click="playMessageAudio(message.audioURL, i)"
+    style="cursor: pointer"
   >
-    <div class="message">
+    <div class="message" :ref="(el) => (elements[i] = el)">
       <div v-if="showText">{{ message.transcriptText }}</div>
       <audio
         style="border: none"
