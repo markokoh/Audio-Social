@@ -35,7 +35,6 @@ const playMessageAudio = (url, index) => {
   elements.value[index].style.outline = "10px solid #A61C3C";
   const voicemail = new Audio(url);
   voicemail.play();
-
   voicemail.onended = function () {
     elements.value[index].style.outline = "none";
   };
