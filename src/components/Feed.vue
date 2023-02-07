@@ -32,13 +32,12 @@ const makeHumanReadableTime = (epochMilliseconds) => {
 const playMessageAudio = (url, index) => {
   console.log("playMessageAudio");
   console.log("index", index);
-  elements.value[index].style.backgroundColor = "red";
-  elements.value[index].classList.add("animate__animated", "animate__shakeX");
-  const beat = new Audio(url);
-  beat.play();
+  elements.value[index].style.outline = "10px solid #A61C3C";
+  const voicemail = new Audio(url);
+  voicemail.play();
 
-  beat.onended = function () {
-    elements.value[index].style.backgroundColor = "gray";
+  voicemail.onended = function () {
+    elements.value[index].style.outline = "none";
   };
 };
 
@@ -58,14 +57,9 @@ onSnapshot(q, (snapshot) => {
 </script>
 
 <template>
-  <div style="margin-left: 25%">
-    <h1 class="font">Messages</h1>
-    <button
-      :class="{ 'audio-only': showText, 'text-only': !showText }"
-      @click="hideText"
-    >
-      text / audio
-    </button>
+  <div class="margin-left">
+    <h1 class="font">Audio Social</h1>
+    <button class="select" @click="hideText">text / audio</button>
   </div>
   <div
     v-for="(message, i) in messages"
@@ -85,10 +79,7 @@ onSnapshot(q, (snapshot) => {
         :src="message.audioURL"
       ></audio>
     </div>
-    <div
-      style="margin-left: 25%; font-size: small; font-weight: bold"
-      class="font"
-    >
+    <div style="font-size: small; font-weight: bold" class="font margin-left">
       {{ makeHumanReadableTime(message.time) }}
     </div>
   </div>
@@ -99,10 +90,11 @@ onSnapshot(q, (snapshot) => {
   padding: 20px;
   margin-top: 50px;
   margin-bottom: 10px;
-  margin-left: 25%;
-  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
   border-radius: 5px;
-  background-color: gray;
+  background-color: #f4ac45;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   /* font-size: small; */
@@ -121,7 +113,7 @@ button {
 }
 
 audio::-webkit-media-controls-panel {
-  background-color: gray;
+  background-color: #f4ac45;
 }
 
 audio::-webkit-media-controls-play-button {
@@ -130,15 +122,15 @@ audio::-webkit-media-controls-play-button {
   color: white;
 }
 
-.audio-only {
-  background-color: blue;
-}
-
-.text-only {
-  background-color: red;
+.select {
+  background-color: #a61c3c;
 }
 
 .font {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.margin-left {
+  margin-left: 28vw;
 }
 </style>
