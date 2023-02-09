@@ -4,7 +4,7 @@
 
 # Description:
 
-Audio Social is an open social application that presents voicemails on a social media feed. It uses Firebase for the backend, SignalWire to receive calls, and Vue.js for the front end. Using SignalWire Compatibility XML, I created a Voice XLM bin to determine how a phone number would handle voicemails. Using the ‘Record’ command with the ‘transcribe’ attribute, voicemails are recorded, transcribed, then saved to my Signalwire account. A Firebase cloud function “getTranscription” is triggered by the ‘transcribeCallback’ attribute, and the transcription text, and a URL to the voicemail recording are stored in a Cloud Firestore database. On the front end, the Feed.vue component listens for messages as they added to the database and displays them in real-time.
+Audio Social is an open social application that presents voicemails on a social media feed. It uses Firebase for the backend, SignalWire to receive calls, and Vue.js for the front end. Using SignalWire Compatibility XML, I created a Voice XLM bin to determine how a phone number would handle voicemails. Using the ‘Record’ command with the ‘transcribe’ attribute, voicemails are recorded, transcribed, then saved to my Signalwire account. A Firebase cloud function “getTranscription” is triggered by the ‘transcribeCallback’ attribute, and the transcription text, and a URL to the voicemail recording are sent to a Cloud Firestore database. On the front end, the Feed.vue component listens for messages as they added to the database, and displays them in real-time.
 
 # How to use:
 
