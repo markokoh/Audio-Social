@@ -1,35 +1,33 @@
-# OpenAI-Two
+<!-- @format -->
 
-This template should help get you started developing with Vue 3 in Vite.
+# Title: Audio Social
 
-## Recommended IDE Setup
+# Description:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Audio Social is an open social application that presents voicemails on a social media feed. It uses Firebase for the backend, SignalWire to receive calls, and Vue.js for the front end. Using SignalWire Compatibility XML, I created a Voice XLM bin to determine how a phone number would handle voicemails. Using the ‘Record’ command with the ‘transcribe’ attribute, voicemails are recorded, transcribed, then saved to my Signalwire account. A Firebase cloud function “getTranscription” is triggered by the ‘transcribeCallback’ attribute, and the transcription text, and a URL to the voicemail recording are stored in a Cloud Firestore database. On the front end, the Feed.vue component listens for messages as they added to the database and displays them in real-time.
 
-## Customize configuration
+# How to use:
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Transcriptions of voicemails are displayed on a feed. To hear the original voicemail click the message and it will play. To view the feed as audio only press the ‘text/audio button. To add a post of your own, call the Signnalwire number listed bellow and leave a message - it will appear on the feed moments later.
 
-## Project Setup
+**Video Demo:**
 
-```sh
-npm install
-```
+https://firebasestorage.googleapis.com/v0/b/textvote-7a52e.appspot.com/o/images%2FAudio-Social-Video.mp4?alt=media&token=3ac523fb-5d9c-4d28-9b6e-ccad46843ae5
 
-### Compile and Hot-Reload for Development
+**Demo Site:**
 
-```sh
-npm run dev
-```
+https://udemy-vue-firebase-sites-ea94e.web.app
 
-### Compile and Minify for Production
+**Sandbox:**
 
-```sh
-npm run build
-```
+https://codesandbox.io/p/github/markokoh/Audio-Social/main?file=%2Ffunctions%2Findex.js
 
-### Lint with [ESLint](https://eslint.org/)
+If you wish to fork this project and make your own version, you will need Firebase and SignalWire accounts:
 
-```sh
-npm run lint
-```
+https://signalwire.com/
+
+https://firebase.google.com/
+
+The code is made available through a GNU LGPLv3 license.
+
+Mark Okoh

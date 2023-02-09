@@ -96,13 +96,11 @@ onSnapshot(q, (snapshot) => {
   background-color: #f4ac45;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* font-size: small; */
   min-height: 80px;
   font-weight: bold;
 }
 
 button {
-  /* background-color: brown; */
   color: white;
   padding: 10px;
   border-radius: 3px;
