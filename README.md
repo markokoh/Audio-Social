@@ -8,7 +8,7 @@ Audio Social is an open social application that presents voicemails on a social 
 
 # How to use:
 
-Transcriptions of voicemails are displayed on a feed. To hear the original voicemail click the message and it will play. To view the feed as audio only press the ‘text/audio button. To add a post of your own, call the Signnalwire number listed bellow and leave a message - it will appear on the feed moments later.
+Transcriptions of voicemails are displayed on a feed. To hear the original voicemail, click the message. To view the feed as audio only, press the "text/audio" button. To add a post of your own, call the Signnalwire number listed bellow, and leave a message - it will appear on the feed moments later.
 
 **Video Demo:**
 

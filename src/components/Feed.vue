@@ -30,8 +30,6 @@ const makeHumanReadableTime = (epochMilliseconds) => {
 };
 
 const playMessageAudio = (url, index) => {
-  console.log("playMessageAudio");
-  console.log("index", index);
   elements.value[index].style.outline = "10px solid #A61C3C";
   const voicemail = new Audio(url);
   voicemail.play();
@@ -47,7 +45,6 @@ const q = query(
 onSnapshot(q, (snapshot) => {
   snapshot.docChanges().forEach((change) => {
     if (change.type === "added") {
-      console.log("New message: ", change.doc.data());
       messages.value.unshift(change.doc.data());
       makeHumanReadableTime(change.doc.data().time);
     }
